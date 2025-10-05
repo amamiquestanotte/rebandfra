@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il mio primo sito</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Benvenuta sul mio primo sito!</h1>
+    <p>Questa è la mia pagina di prova su GitHub.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Chi sono</h2>
+      <p>Qui puoi scrivere qualche informazione su di te o sul progetto.</p>
+    </section>
+
+    <section>
+      <h2>I miei interessi</h2>
+      <ul>
+        <li>Moda</li>
+        <li>Musica</li>
+        <li>Comunicazione digitale</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Il mio primo sito</p>
+  </footer>
+</body>
+</html>
