@@ -7,13 +7,14 @@
     body {
       margin: 0;
       padding: 0;
-      background-color: #AEE1FF; /* sfondo celeste */
+      background-color: #AEE1FF;
       font-family: 'Arial', sans-serif;
       display: flex;
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
       text-align: center;
+      position: relative;
     }
 
     /* H1 in alto */
@@ -29,26 +30,92 @@
       animation: pulse 2s infinite;
     }
 
+    /* H1 centrale */
     h1.center {
-  margin: auto 0; /* centra verticalmente */
-  font-size: 1.7rem; /* leggermente più piccolo di prima */
-  color: white;
-  text-shadow: 
-    -2px -2px 0 #005F8C,
-     2px -2px 0 #005F8C,
-    -2px  2px 0 #005F8C,
-     2px  2px 0 #005F8C;
-  max-width: 700px; /* larghezza massima */
-  line-height: 1.3; /* spazio tra le righe */
-  padding: 20px;
-  animation: pulse 2s infinite;
-}
+      margin: auto 0;
+      font-size: 1.7rem;
+      color: white;
+      text-shadow: 
+        -2px -2px 0 #005F8C,
+         2px -2px 0 #005F8C,
+        -2px  2px 0 #005F8C,
+         2px  2px 0 #005F8C;
+      max-width: 700px;
+      line-height: 1.3;
+      padding: 20px;
+      animation: pulse 2s infinite;
+    }
 
+    /* Footer */
+    footer {
+      margin-top: 20px;
+      padding: 15px 20px;
+      color: #fff;
+      text-shadow: 
+        -1px -1px 0 #005F8C,
+         1px -1px 0 #005F8C,
+        -1px  1px 0 #005F8C,
+         1px  1px 0 #005F8C;
+      font-size: 1.2rem;
+      text-align: center;
+      animation: fadeIn 2s ease-in;
+    }
 
     @keyframes pulse {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.05); }
     }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* CTA container */
+    .cta-container {
+      margin: 40px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .cta-box {
+      background-color: #ff9f1c;
+      padding: 20px 30px;
+      border-radius: 15px;
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      position: relative;
+    }
+
+    .cta-button {
+      padding: 15px 25px;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      background-color: #00b894;
+      color: white;
+      border: none;
+      font-size: 1rem;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .cta-button.no {
+      background-color: #d63031;
+      position: absolute;
+    }
+
   </style>
 </head>
 <body>
@@ -59,5 +126,35 @@
     ho imparato una cosa nuova (e senza il tuo aiuto!!!)<br>
     spero di riuscire a farmi perdonare con questa piccola cosina
   </h1>
+
+  <!-- CTA -->
+  <div class="cta-container">
+    <div class="cta-box">Chicchino, puoi permettermi di chiederti scusa?</div>
+    <div class="cta-buttons">
+      <button class="cta-button yes" onclick="alert('Grazie Fra! ❤️')">Sì</button>
+      <button class="cta-button no">No</button>
+    </div>
+  </div>
+
+  <footer>
+    Con le mie parole non sono chiara, quindi sto provando a parlare la tua lingua❤️‍🩹
+  </footer>
+
+  <script>
+    const noButton = document.querySelector('.cta-button.no');
+
+    // Funzione per far muovere il pulsante "No"
+    noButton.addEventListener('mouseenter', () => {
+      const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+      noButton.style.left = x + 'px';
+      noButton.style.top = y + 'px';
+    });
+
+    // Dopo 10 secondi, il pulsante "No" scompare
+    setTimeout(() => {
+      noButton.style.display = 'none';
+    }, 10000);
+  </script>
 </body>
 </html>
