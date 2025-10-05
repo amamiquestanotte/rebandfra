@@ -92,10 +92,10 @@
 
     .cta-buttons {
       display: flex;
-      justify-content: center;
-      gap: 60px;
-      position: relative;
+      justify-content: space-between;
       width: 100%;
+      max-width: 300px;
+      position: relative;
     }
 
     .cta-button {
@@ -117,9 +117,11 @@
 
     .cta-button.no {
       background-color: #d63031;
-      position: absolute;
-      z-index: 1;
+      color: white;
+      position: fixed; /* ora si muove liberamente in tutta la pagina */
+      z-index: 10;
     }
+
   </style>
 </head>
 <body>
@@ -136,7 +138,7 @@
     <p>Chicchino, puoi permettermi di chiederti scusa?</p>
     <div class="cta-buttons">
       <button class="cta-button yes" onclick="window.location.href='https://tuo-link-destinazione.com'">Sì</button>
-      <button class="cta-button no">No</button>
+      <button class="cta-button no" style="left: 60%; top: 50%;">No</button>
     </div>
   </div>
 
@@ -146,7 +148,6 @@
 
   <script>
     const noButton = document.querySelector('.cta-button.no');
-    const yesButton = document.querySelector('.cta-button.yes');
     let moveCount = 0;
     const maxMoves = 4;
 
@@ -156,11 +157,8 @@
         return;
       }
 
-      const buttonWidth = noButton.offsetWidth;
-      const buttonHeight = noButton.offsetHeight;
-
-      const x = Math.random() * (window.innerWidth - buttonWidth);
-      const y = Math.random() * (window.innerHeight - buttonHeight);
+      const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+      const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
 
       noButton.style.left = x + 'px';
       noButton.style.top = y + 'px';
