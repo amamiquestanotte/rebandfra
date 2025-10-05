@@ -8,15 +8,30 @@
       margin: 0;
       padding: 0;
       background-color: #AEE1FF; /* sfondo celeste */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
       text-align: center;
     }
 
-    h1 {
+    /* H1 in alto */
+    h1.top {
+      margin-top: 30px;
+      font-size: 2rem;
+      color: white;
+      text-shadow: 
+        -2px -2px 0 #005F8C,
+         2px -2px 0 #005F8C,
+        -2px  2px 0 #005F8C,
+         2px  2px 0 #005F8C;
+      animation: pulse 2s infinite;
+    }
+
+    /* H1 centrale */
+    h1.center {
+      margin: auto 0; /* centra verticalmente */
       font-size: 2.5rem;
       color: white;
       text-shadow: 
@@ -27,10 +42,6 @@
       max-width: 800px;
       line-height: 1.4;
       padding: 20px;
-    }
-
-    /* Animazione leggera per rendere il testo più dinamico */
-    h1 {
       animation: pulse 2s infinite;
     }
 
@@ -41,15 +52,12 @@
   </style>
 </head>
 <body>
-  <h2>
-    UN PENSIERO SPECIALE (SPERO)
-  </h2>
+  <h1 class="top">UN PENSIERO SPECIALE (SPERO)</h1>
 
-  
-  </h1>
-  ciao Fra   
-  ho imparato una cosa nuova, e senza il tuo aiuto!<br>
-  spero di riuscire a farmi perdonare con questa piccola cosina
+  <h1 class="center">
+    ciao Fra<br>
+    ho imparato una cosa nuova (e senza il tuo aiuto!!!)<br>
+    spero di riuscire a farmi perdonare con questa piccola cosina
   </h1>
 </body>
 </html>
