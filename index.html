@@ -46,15 +46,15 @@
     }
 
     footer {
-      margin-top: 20px;
-      padding: 15px 20px;
+      margin-top: 30px;
+      padding: 10px 20px;
       color: #fff;
       text-shadow: 
         -1px -1px 0 #005F8C,
          1px -1px 0 #005F8C,
         -1px  1px 0 #005F8C,
          1px  1px 0 #005F8C;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       text-align: center;
       animation: fadeIn 2s ease-in;
     }
@@ -71,7 +71,7 @@
 
     /* CTA principale */
     .cta-container {
-      margin: 40px 0;
+      margin: 30px 0;
       background-color: #FFD1DC; /* rosa pastello scelto */
       padding: 40px 50px;
       border-radius: 20px;
@@ -119,8 +119,20 @@
       background-color: #d63031;
       color: white;
       z-index: 10;
-      /* posizione iniziale relativa al riquadro */
       position: relative;
+    }
+
+    /* -- MOBILE FIX -- */
+    @media (max-width: 600px) {
+      .cta-container {
+        margin-top: 10px;  /* porta su il riquadro rosa */
+        padding: 30px 30px;
+      }
+
+      footer {
+        margin-top: 20px;   /* avvicina il footer */
+        font-size: 1.5rem;  /* ancora più leggibile */
+      }
     }
 
   </style>
@@ -152,14 +164,12 @@
     let moveCount = 0;
     const maxMoves = 4;
 
-    // Posizione iniziale relativa al riquadro
     noButton.style.position = 'relative';
     noButton.style.left = '0';
     noButton.style.top = '0';
 
     function moveNoButton() {
       if (moveCount === 0) {
-        // Prima volta: diventare fixed per muoversi in tutta la pagina
         noButton.style.position = 'fixed';
       }
 
