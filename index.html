@@ -17,7 +17,6 @@
       position: relative;
     }
 
-    /* H1 in alto */
     h1.top {
       margin-top: 30px;
       font-size: 2rem;
@@ -30,7 +29,6 @@
       animation: pulse 2s infinite;
     }
 
-    /* H1 centrale */
     h1.center {
       margin: auto 0;
       font-size: 1.7rem;
@@ -46,7 +44,6 @@
       animation: pulse 2s infinite;
     }
 
-    /* Footer */
     footer {
       margin-top: 20px;
       padding: 15px 20px;
@@ -71,51 +68,54 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* CTA container */
+    /* CTA principale */
     .cta-container {
       margin: 40px 0;
+      background-color: #ff9f1c;
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 6px 10px rgba(0,0,0,0.2);
       display: flex;
       flex-direction: column;
       align-items: center;
       position: relative;
     }
 
-    .cta-box {
-      background-color: #ff9f1c;
-      padding: 20px 30px;
-      border-radius: 15px;
+    .cta-container p {
       color: white;
       font-weight: bold;
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-      text-align: center;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      font-size: 1.3rem;
+      margin-bottom: 25px;
     }
 
     .cta-buttons {
       display: flex;
-      gap: 20px;
+      gap: 40px;
       position: relative;
     }
 
     .cta-button {
-      padding: 15px 25px;
-      border-radius: 10px;
+      padding: 15px 30px;
+      border-radius: 12px;
       font-weight: bold;
-      cursor: pointer;
-      background-color: #00b894;
-      color: white;
-      border: none;
       font-size: 1rem;
-      position: relative;
+      cursor: pointer;
+      border: none;
       transition: all 0.2s ease;
+      color: white;
+    }
+
+    .cta-button.yes {
+      background-color: #00b894;
+      position: relative;
+      z-index: 2;
     }
 
     .cta-button.no {
       background-color: #d63031;
       position: absolute;
+      z-index: 1;
     }
-
   </style>
 </head>
 <body>
@@ -129,9 +129,9 @@
 
   <!-- CTA -->
   <div class="cta-container">
-    <div class="cta-box">Chicchino, puoi permettermi di chiederti scusa?</div>
+    <p>Chicchino, puoi permettermi di chiederti scusa?</p>
     <div class="cta-buttons">
-      <button class="cta-button yes" onclick="alert('Grazie Fra! ❤️')">Sì</button>
+      <button class="cta-button yes" onclick="window.location.href='https://tuo-link-destinazione.com'">Sì</button>
       <button class="cta-button no">No</button>
     </div>
   </div>
@@ -142,19 +142,22 @@
 
   <script>
     const noButton = document.querySelector('.cta-button.no');
+    let moveCount = 0;
+    const maxMoves = 4;
 
-    // Funzione per far muovere il pulsante "No"
-    noButton.addEventListener('mouseenter', () => {
-      const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
-      const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+    function moveNoButton() {
+      if (moveCount >= maxMoves) {
+        noButton.style.display = 'none';
+        return;
+      }
+      const x = Math.random() * (window.innerWidth - noButton.offsetWidth - 20);
+      const y = Math.random() * (window.innerHeight - noButton.offsetHeight - 20);
       noButton.style.left = x + 'px';
       noButton.style.top = y + 'px';
-    });
+      moveCount++;
+    }
 
-    // Dopo 10 secondi, il pulsante "No" scompare
-    setTimeout(() => {
-      noButton.style.display = 'none';
-    }, 10000);
+    noButton.addEventListener('mouseenter', moveNoButton);
   </script>
 </body>
 </html>
